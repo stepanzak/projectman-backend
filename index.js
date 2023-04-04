@@ -1,6 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
+app.use('/', express.static('../projectman-frontend/dist'))
 app.use(express.json())
+app.use(cors())
 
 //mongoose for interacting with mongodb
 const mongoose = require('mongoose');
@@ -62,6 +65,7 @@ const Worker = mongoose.model('Worker', workerSchema);
 
 app.get('/', (req, res) => {
     res.send("jarel je karel")
+    res.send("ok")
 })
 
 app.post('/expenses', (req, res) => {
